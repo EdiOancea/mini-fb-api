@@ -1,0 +1,21 @@
+*.DS_Store
+*.pyc
+*.bak
+*.db
+
+# virtualenv
+.Python
+bin/
+include/
+lib/
+.env
+media/
+app/db.sqlite3
+
+# logs
+.coverage
+
+# non-shareable scripts
+giev_db.sh
+load_backup_db.sh
+database_backups
