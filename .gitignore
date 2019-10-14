@@ -1,0 +1,5 @@
+*.DS_Store
+
+# virtualenv
+mini-fb-api/
+media/
