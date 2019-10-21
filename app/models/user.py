@@ -2,8 +2,9 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 from django.db.models import Q
 
+from app.models.abstracts import Date
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, Date):
     class Meta:
         db_table = 'users'
 
@@ -26,5 +27,11 @@ class User(AbstractBaseUser):
         choices=USER_LEVELS
     )
 
-    def __str__(self):
-        return str(self.email)
+    def get_str_representation(self):
+        return {
+            'email': self.email,
+            'level': self.level,
+        }
+
+    def get_full_name(self):
+        return self.first_name + self.last_name
