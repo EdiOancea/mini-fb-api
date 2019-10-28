@@ -8,6 +8,6 @@ class SoftDeletionManager(models.Manager):
 
     def get_queryset(self):
         if self.alive_only:
-            return QuerySet(self.model).filter(deleted_at=None)
+            return QuerySet(self.model).filter(is_active=False)
 
         return QuerySet(self.model)
