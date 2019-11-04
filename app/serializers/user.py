@@ -14,4 +14,5 @@ class UserSerializer(serializers.ModelSerializer):
             'level',
             'created_at',
             'updated_at',
+            'is_active',
         ]

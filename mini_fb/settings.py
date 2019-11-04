@@ -85,7 +85,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mini_fb',
-        'USER': 'edi'
+        'USER': 'algotech'
     }
 }
 
