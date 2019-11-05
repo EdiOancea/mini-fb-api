@@ -13,26 +13,23 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def all(self, request):
-        queryset = User.all_objects.all()
+        queryset = User.objects.get_all()
         serializer = UserSerializer(queryset, many=True)
 
         return Response(serializer.data)
 
     @action(detail=True, methods=['put'])
     def reactivate(self, request, pk=None):
-        queryset = User.all_objects.all()
+        queryset = User.objects.get_all()
         user = get_object_or_404(queryset, pk=pk)
         user.undelete()
-        serializer = UserSerializer(user)
+        serializer = self.serializer_class(user)
 
         return Response(serializer.data)
 
     def update(self, request, pk=None):
         queryset = User.objects.all()
         user = get_object_or_404(queryset, pk=pk)
-        existingUser = UserSerializer(user)
-
-        if existingUser.data.get('is_active') != request.data.get('is_active'):
-            raise serializers.ValidationError('Can\'t deactivate user here.')
+        existingUser = self.serializer_class(user)
 
         return super(UserViewSet, self).update(request, pk)

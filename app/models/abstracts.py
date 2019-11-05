@@ -13,9 +13,7 @@ class Date(models.Model):
 
 class SoftDeletionModel(models.Model):
     is_active = models.BooleanField(default=True)
-
     objects = SoftDeletionManager()
-    all_objects = SoftDeletionManager(alive_only=False)
 
     class Meta:
         abstract = True

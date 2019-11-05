@@ -16,3 +16,4 @@ class UserSerializer(serializers.ModelSerializer):
             'updated_at',
             'is_active',
         ]
+        read_only_fields = ['is_active']
