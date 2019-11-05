@@ -7,9 +7,3 @@ class SoftDeletionQuerySet(QuerySet):
 
     def hard_delete(self):
         return super(SoftDeletionQuerySet, self).delete()
-
-    def alive(self):
-        return self.filter(is_active=True)
-
-    def dead(self):
-        return self.filter(is_active=False)
