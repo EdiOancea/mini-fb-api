@@ -3,8 +3,6 @@ from datetime import datetime
 
 from app.managers.abstracts import SoftDeletionManager
 
-from app.managers.abstracts import SoftDeletionManager
-
 
 class Date(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
