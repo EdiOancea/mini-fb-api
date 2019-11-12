@@ -2,15 +2,19 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 
 from app.models.abstracts import Date, SoftDeletionModel
+from app.managers import UserManager
 
-class User(AbstractBaseUser, Date, SoftDeletionModel):
+class User(Date, AbstractBaseUser, SoftDeletionModel):
     class Meta:
         db_table = 'users'
 
+    objects = UserManager()
     REGULAR_USER_LEVEL = 'regular_user'
     SUPER_USER_LEVEL = 'super_user'
     USERNAME_FIELD = 'email'
-    
+
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'password']
+
     USER_LEVELS = [
         (REGULAR_USER_LEVEL, 'Regular User'),
         (SUPER_USER_LEVEL, 'Super User'),
@@ -19,7 +23,7 @@ class User(AbstractBaseUser, Date, SoftDeletionModel):
     first_name = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128)
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=20)
+    password = models.CharField(max_length=256)
 
     level = models.CharField(
         max_length=32,

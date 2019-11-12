@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework import serializers
 
 from app.models.user import User
 from app.serializers.user import UserSerializer
@@ -23,13 +22,19 @@ class UserViewSet(viewsets.ModelViewSet):
         queryset = User.objects.get_all()
         user = get_object_or_404(queryset, pk=pk)
         user.undelete()
-        serializer = self.serializer_class(user)
+        serializer = UserSerializer(user)
 
         return Response(serializer.data)
 
     def update(self, request, pk=None):
         queryset = User.objects.all()
         user = get_object_or_404(queryset, pk=pk)
-        existingUser = self.serializer_class(user)
+        existingUser = UserSerializer(user)
 
         return super(UserViewSet, self).update(request, pk)
+
+    def create(self, request):
+        createdUser = User.objects.create_user(**request.data)
+        serializer = UserSerializer(createdUser)
+
+        return Response(serializer.data)
