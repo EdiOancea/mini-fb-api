@@ -1,16 +1,16 @@
 from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
-from django.db.models import Q
 
-from app.models.abstracts import Date
+from app.models.abstracts import Date, SoftDeletionModel
 
-class User(AbstractBaseUser, Date):
+class User(AbstractBaseUser, Date, SoftDeletionModel):
     class Meta:
         db_table = 'users'
 
     REGULAR_USER_LEVEL = 'regular_user'
     SUPER_USER_LEVEL = 'super_user'
-
+    USERNAME_FIELD = 'email'
+    
     USER_LEVELS = [
         (REGULAR_USER_LEVEL, 'Regular User'),
         (SUPER_USER_LEVEL, 'Super User'),
