@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import path
 from rest_framework import routers
 
 from app.views.user import UserViewSet
@@ -8,5 +8,5 @@ router = routers.DefaultRouter()
 router.register(r'users', UserViewSet, base_name='users')
 
 urlpatterns = [
-    url(r'^login/', LoginView.as_view(), name='knox_login'),
+    path('login/', LoginView.as_view(), name='knox_login'),
 ] + router.urls

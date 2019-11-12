@@ -27,15 +27,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.data)
 
-    def update(self, request, pk=None):
-        queryset = User.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        existingUser = UserSerializer(user)
-
-        return super(UserViewSet, self).update(request, pk)
-
     def create(self, request):
-        createdUser = User.objects.create_user(**request.data)
-        serializer = UserSerializer(createdUser)
+        create_user = User.objects.create_user(**request.data)
+        serializer = UserSerializer(create_user)
 
         return Response(serializer.data)
