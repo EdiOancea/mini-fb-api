@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'mini_fb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': os.environ.get('DB_ENGINE'),
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
     }
