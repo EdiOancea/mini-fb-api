@@ -3,3 +3,4 @@
 # virtualenv
 mini-fb-api/
 media/
+.env
