@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
@@ -9,6 +9,7 @@ from app.serializers.user import UserSerializer
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    permission_classes = (permissions.AllowAny,)
 
     @action(detail=False, methods=['get'])
     def all(self, request):
@@ -26,15 +27,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.data)
 
-    def update(self, request, pk=None):
-        queryset = User.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        existingUser = UserSerializer(user)
-
-        return super(UserViewSet, self).update(request, pk)
-
     def create(self, request):
-        createdUser = User.objects.create_user(**request.data)
-        serializer = UserSerializer(createdUser)
+        create_user = User.objects.create_user(**request.data)
+        serializer = UserSerializer(create_user)
 
         return Response(serializer.data)
