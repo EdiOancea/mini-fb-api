@@ -1,7 +1,6 @@
 import json
 
 from django.test import TestCase
-from django.http import HttpRequest
 from rest_framework.test import APIClient
 
 from app.models import User
