@@ -1,0 +1,48 @@
+- model: app.user
+  pk: 1
+  fields:
+    last_login: null
+    created_at: 2019-11-05 21:12:12.674746+00:00
+    updated_at: 2019-11-05 22:05:25.726837+00:00
+    is_active: true
+    first_name: Oancea
+    last_name: Eduarda
+    email: eduard.oancea@algotech.solutions
+    password: pbkdf2_sha256$150000$ziZHONfZPT9x$wtbbDOBXIWg+6hfoin3fBh0yFTVotot5Yo21m2T0Gf4=
+    level: super_user
+- model: app.user
+  pk: 2
+  fields:
+    last_login: null
+    created_at: 2019-11-05 21:16:19.722481+00:00
+    updated_at: 2019-11-05 21:16:19.722513+00:00
+    is_active: false
+    first_name: Cozea
+    last_name: Raluca
+    email: raluca.cozea@algotech.solutions
+    password: pbkdf2_sha256$150000$ntn43dP3aGhf$WiAkeehVT+PjeuaaQqInD2elKygH5h35VuxAEYEO2dU=
+    level: super_user
+- model: app.user
+  pk: 3
+  fields:
+    last_login: null
+    created_at: 2019-11-05 21:18:30.517377+00:00
+    updated_at: 2019-11-05 21:18:30.517408+00:00
+    is_active: false
+    first_name: Iohannis
+    last_name: Klaus
+    email: nu.vorbesc@oof.ro
+    password: pbkdf2_sha256$150000$JI94Jo5czFYn$dVbNM2UZK6kR0u8TXaZ7K+J4eGH64sI3ZWP3rPL5J0c=
+    level: regular_user
+- model: app.user
+  pk: 4
+  fields:
+    last_login: null
+    created_at: 2019-11-05 21:19:25.698506+00:00
+    updated_at: 2019-11-05 21:19:25.698531+00:00
+    is_active: true
+    first_name: Codrin
+    last_name: Bradea
+    email: codrin.bradea@gucci.guess
+    password: pbkdf2_sha256$150000$yT8MEjETeUxA$Cjs6sy8YWExUofkKsRG38k7YGBdeKJLmsemXzplSTfI=
+    level: regular_user

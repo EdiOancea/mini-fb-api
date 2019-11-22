@@ -97,6 +97,7 @@ DATABASES = {
     }
 }
 
+FIXTURE_DIRS = (os.path.join(BASE_DIR, os.environ.get('FIXTURE_PATH')),)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -123,13 +124,9 @@ AUTH_USER_MODEL = 'app.user'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
 
 USE_L10N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

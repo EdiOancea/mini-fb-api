@@ -28,7 +28,8 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def create(self, request):
+        serializer = UserSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
         create_user = User.objects.create_user(**request.data)
-        serializer = UserSerializer(create_user)
 
-        return Response(serializer.data)
+        return Response(serializer.data, status=201)
