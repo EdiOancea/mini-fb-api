@@ -1,12 +1,17 @@
 from django.urls import path
-from rest_framework import routers
+from django.conf.urls import include
+from rest_framework_nested import routers
 
-from app.views.user import UserViewSet
-from app.views.auth import LoginView
+from app.views import UserViewSet, PostViewSet, LoginView
 
-router = routers.DefaultRouter()
+router = routers.SimpleRouter()
 router.register(r'users', UserViewSet, base_name='users')
+
+users_router = routers.NestedSimpleRouter(router, r'users', lookup='user')
+users_router.register(r'posts', PostViewSet, base_name='posts')
 
 urlpatterns = [
     path('login/', LoginView.as_view(), name='knox_login'),
-] + router.urls
+    path('', include(router.urls)),
+    path('', include(users_router.urls))
+]

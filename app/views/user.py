@@ -32,4 +32,4 @@ class UserViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         create_user = User.objects.create_user(**request.data)
 
-        return Response(serializer.data, status=201)
+        return Response(UserSerializer(instance=create_user).data, status=201)
