@@ -13,8 +13,6 @@ class User(Date, AbstractBaseUser, SoftDeletionModel):
     SUPER_USER_LEVEL = 'super_user'
     USERNAME_FIELD = 'email'
 
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'password']
-
     USER_LEVELS = [
         (REGULAR_USER_LEVEL, 'Regular User'),
         (SUPER_USER_LEVEL, 'Super User'),

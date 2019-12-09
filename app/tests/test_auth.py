@@ -1,22 +1,20 @@
 import json
-
 from django.test import TestCase
 from rest_framework.test import APIClient
 
-class UserTestCase(TestCase):
-    fixtures = ('user',)
-    SERVER_NAME = 'http://gucci.com/api'
+from app.tests.base_test import BaseTestCase
 
-    def setUp(self):
-        self.client = APIClient()
+
+class UserTestCase(BaseTestCase):
+    fixtures = ('user',)
 
     def test_auth_success(self):
         config = {
             'url': '/login/',
             'payload' : {
                 'email': 'eduard.oancea@algotech.solutions',
-                'password': '123123',
-            },
+                'password': '123123'
+            }
         }
 
         response = self.client.post(
@@ -34,8 +32,8 @@ class UserTestCase(TestCase):
             'url': '/login/',
             'payload' : {
                 'email': 'eduard.oancea@algotech.solutions',
-                'password': '123123123',
-            },
+                'password': '123123123'
+            }
         }
 
         response = self.client.post(

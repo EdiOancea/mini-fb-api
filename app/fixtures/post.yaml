@@ -1,0 +1,28 @@
+- model: app.post
+  pk: 1
+  fields:
+    content: Dansezi ca un motor.
+    created_at: 2019-11-05 21:16:19.722481+00:00
+    updated_at: 2019-11-05 21:16:19.722513+00:00
+    user: 1
+- model: app.post
+  pk: 2
+  fields:
+    content: Si dupa tine mor.
+    created_at: 2019-11-05 21:16:19.722481+00:00
+    updated_at: 2019-11-05 21:16:19.722513+00:00
+    user: 1
+- model: app.post
+  pk: 3
+  fields:
+    content: Te misti nenorocire.
+    created_at: 2019-11-05 21:16:19.722481+00:00
+    updated_at: 2019-11-05 21:16:19.722513+00:00
+    user: 2
+- model: app.post
+  pk: 4
+  fields:
+    content: Atunci cand esti pe mine.
+    created_at: 2019-11-05 21:16:19.722481+00:00
+    updated_at: 2019-11-05 21:16:19.722513+00:00
+    user: 3

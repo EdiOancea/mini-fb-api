@@ -8,8 +8,5 @@ class Post(Date):
     class Meta:
         db_table = 'posts'
 
-    REQUIRED_FIELDS = ['content']
-
     content = models.TextField()
     user = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
-    
