@@ -13,8 +13,8 @@ class UserTestCase(BaseTestCase):
             'url': '/login/',
             'payload' : {
                 'email': 'eduard.oancea@algotech.solutions',
-                'password': '123123'
-            }
+                'password': '123123',
+            },
         }
 
         response = self.client.post(
@@ -32,8 +32,8 @@ class UserTestCase(BaseTestCase):
             'url': '/login/',
             'payload' : {
                 'email': 'eduard.oancea@algotech.solutions',
-                'password': '123123123'
-            }
+                'password': '123123123',
+            },
         }
 
         response = self.client.post(
