@@ -5,10 +5,11 @@ from rest_framework.decorators import action
 
 from app.models import Post
 from app.serializers import PostSerializer
+from app.permissions import IsOwner
 
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated, IsOwner,)
     lookup_field = 'id'
 
     def get_queryset(self):

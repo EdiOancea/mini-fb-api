@@ -92,7 +92,8 @@ class PostTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(post_no + 1, Post.objects.filter(user_id=config['user_id']).count())
 
-    def test_create_invalid_user(self):
+    def test_create_inexistent_user(self):
+        #should return 400
         config = {
             'url': '/users/20/posts/',
             'payload': {
@@ -107,7 +108,7 @@ class PostTestCase(BaseTestCase):
             format='json'
         )
 
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 403)
 
     def test_create_invalid_post(self):
         config = {
@@ -149,7 +150,25 @@ class PostTestCase(BaseTestCase):
         for key, value in config['payload'].items():
             self.assertEqual(value, serializer.data[key])
 
-    def test_update_invalid_user(self):
+    def test_update_unallowed(self):
+        config = {
+            'url': '/users/4/posts/5/',
+            'payload': {
+                'id': 5,
+                'user': 4,
+                'content': 'Hai bosulica',
+            },
+        }
+
+        response = self.client.put(
+            self.SERVER_NAME + config['url'],
+            config['payload'],
+            format='json'
+        )
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_update_inexistent_user(self):
         config = { 'url': '/users/20/posts/1/' }
 
         response = self.client.put(
@@ -163,7 +182,7 @@ class PostTestCase(BaseTestCase):
 
         self.assertEqual(response.status_code, 404)
 
-    def test_update_invalid_post(self):
+    def test_update_inexistent_post(self):
         config = { 'url': '/users/1/posts/30/' }
 
         response = self.client.put(
