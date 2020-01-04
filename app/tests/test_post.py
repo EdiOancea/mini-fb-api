@@ -1,8 +1,5 @@
 import json
 
-from django.test import TestCase
-from rest_framework.test import APIClient
-
 from app.tests.base_test import BaseTestCase
 from app.models import User, Post
 from app.serializers import PostSerializer

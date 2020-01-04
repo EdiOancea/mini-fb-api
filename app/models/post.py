@@ -2,7 +2,6 @@ from django.db import models
 
 from app.models.abstracts import Date
 from app.models import User
-from app.managers import UserManager
 
 class Post(Date):
     class Meta:

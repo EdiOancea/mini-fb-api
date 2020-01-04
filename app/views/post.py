@@ -9,7 +9,10 @@ from app.permissions import IsOwner
 
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
-    permission_classes = (permissions.IsAuthenticated, IsOwner,)
+    permission_classes = (
+        permissions.IsAuthenticated,
+        IsOwner,
+    )
     lookup_field = 'id'
 
     def get_queryset(self):
