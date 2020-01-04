@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from app.models.user import User
+from app.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -13,5 +13,6 @@ class UserSerializer(serializers.ModelSerializer):
             'last_name',
             'level',
             'is_active',
+            'posts',
         ]
-        read_only_fields = ['is_active', 'id']
+        read_only_fields = ['is_active', 'id', 'posts']

@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.http import Http404
 from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -10,6 +10,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = (permissions.AllowAny,)
+    lookup_field = 'id'
 
     @action(detail=False, methods=['get'])
     def all(self, request):
@@ -19,17 +20,19 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=True, methods=['put'])
-    def reactivate(self, request, pk=None):
-        queryset = User.objects.get_all()
-        user = get_object_or_404(queryset, pk=pk)
-        user.undelete()
-        serializer = UserSerializer(user)
+    def reactivate(self, request, id=None):
+        try:
+            user = User.objects.filter(pk=id)
+            user.undelete()
+            serializer = UserSerializer(user)
 
-        return Response(serializer.data)
+            return Response(serializer.data)
+        except:
+            raise Http404('Not found.')
 
     def create(self, request):
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         create_user = User.objects.create_user(**request.data)
 
-        return Response(serializer.data, status=201)
+        return Response(UserSerializer(instance=create_user).data, status=201)

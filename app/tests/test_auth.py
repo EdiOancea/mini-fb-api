@@ -1,14 +1,12 @@
 import json
-
 from django.test import TestCase
 from rest_framework.test import APIClient
 
-class UserTestCase(TestCase):
-    fixtures = ('user',)
-    SERVER_NAME = 'http://gucci.com/api'
+from app.tests.base_test import BaseTestCase
 
-    def setUp(self):
-        self.client = APIClient()
+
+class UserTestCase(BaseTestCase):
+    fixtures = ('user',)
 
     def test_auth_success(self):
         config = {
