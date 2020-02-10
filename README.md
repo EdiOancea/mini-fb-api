@@ -1,4 +1,5 @@
 # mini-fb-api
+Most of this documentation was required for a school project.
 
 ## About
 This application is a simple api which supports CRUD operations on a couple of related entities. It is built using REST principles, which stands for "Representational state transfer". It uses a relational database and the SQL language, python as the primary programming language, django as the main framework and django-rest-framework(DRF) on top of django in order to simplify things and make it more scalable. It also utilises yaml for fixtures.
